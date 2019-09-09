@@ -9,3 +9,7 @@ Online showcase the cinema
 4. Configure connection with database by changing com.labus.mycinema.db.ConnectionPool.java , if needed
 5. cd to project folder and mvnw clean install
 6. Run with Tomcat
+
+######Entity relationship diagram database
+![Image of Yaktocat](https://github.com/Labusyuk/ShowcaseTheCinema/blob/master/CinemaBDModelFirst.png?raw=true)
+
