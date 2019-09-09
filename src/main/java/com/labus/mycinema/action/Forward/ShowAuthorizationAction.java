@@ -1,13 +1,14 @@
-package com.labus.mycinema.action;
+package com.labus.mycinema.action.Forward;
 
+import com.labus.mycinema.action.Action;
 import com.labus.mycinema.action.exception.ActionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddMovieAction implements Action {
+public class ShowAuthorizationAction implements Action {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ActionException {
-        return "add-movie";
+        return "login";
     }
 }

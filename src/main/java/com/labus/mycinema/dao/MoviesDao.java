@@ -5,6 +5,7 @@ import com.labus.mycinema.entity.Movies;
 import com.labus.mycinema.entity.User;
 import com.labus.mycinema.entity.UserRole;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +17,10 @@ public class MoviesDao extends EntityDao{
     private final static String SELECT_ALL = "SELECT Id, Name, Description, Price, Duration, Genre, AgeLimit, Dimension, Production, GraduationYear, Producer, Scenario, Staring FROM cinemadb.movies";
 
 
-    public List<Movies> getAll() {
+    public List<Movies> getAll() throws DaoException{
         List<Movies> movies = new ArrayList<>();
         try (
+                Connection connection = pool.takeConnection();
                 PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
                 ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
@@ -26,17 +28,15 @@ public class MoviesDao extends EntityDao{
                 movies.add(movie);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            returnConnection(connection);
+            throw new DaoException(e);
         }
         return movies;
     }
 
-    public Movies getById(Integer id){
-        takeConnection();
+    public Movies getById(Integer id) throws DaoException{
         Movies movies = null;
-        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
+        try (Connection connection = pool.takeConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -44,14 +44,12 @@ public class MoviesDao extends EntityDao{
             }
             resultSet.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            returnConnection(connection);
+            throw new DaoException(e);
         }
         return movies;
     }
 
-    public Movies retrieveEntity(ResultSet resultSet){
+    public Movies retrieveEntity(ResultSet resultSet) throws DaoException{
         Movies movies = new Movies();
         try{
             movies.setId(resultSet.getInt("Id"));
@@ -68,7 +66,7 @@ public class MoviesDao extends EntityDao{
             movies.setScenario(resultSet.getString("Scenario"));
             movies.setStaring(resultSet.getString("Staring"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DaoException(e);
         }
         return movies;
     }

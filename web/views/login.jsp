@@ -22,32 +22,31 @@
 
     <!-- Title -->
     <title>Vobilet - a responsive, flat and full featured admin template</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/views/assets/fonts/fonts/font-awesome.min.css">
 
     <!-- Font Family -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
     <!-- Dashboard Css -->
-    <link href="${pageContext.request.contextPath}/assets/css/dashboard.css" rel="stylesheet">
+    <link href="/views/assets/css/dashboard.css" rel="stylesheet">
 
     <!-- c3.js Charts Plugin -->
-    <link href="${pageContext.request.contextPath}/assets/plugins/charts-c3/c3-chart.css" rel="stylesheet">
+    <link href="/views/assets/plugins/charts-c3/c3-chart.css" rel="stylesheet">
 
     <!-- select2 Plugin -->
-    <link href="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.css" rel="stylesheet">
+    <link href="/views/assets/plugins/select2/select2.min.css" rel="stylesheet">
 
     <!-- Time picker Plugin -->
-    <link href="${pageContext.request.contextPath}/assets/plugins/time-picker/jquery.timepicker.css" rel="stylesheet">
+    <link href="/views/assets/plugins/time-picker/jquery.timepicker.css" rel="stylesheet">
 
     <!-- Date Picker Plugin -->
-    <link href="${pageContext.request.contextPath}/assets/plugins/date-picker/spectrum.css" rel="stylesheet">
+    <link href="/views/assets/plugins/date-picker/spectrum.css" rel="stylesheet">
 
     <!-- Custom scroll bar css-->
-    <link href="${pageContext.request.contextPath}/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="/views/assets/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet">
 
     <!---Font icons-->
-    <link href="${pageContext.request.contextPath}/assets/plugins/iconfonts/plugin.css" rel="stylesheet">
-
+    <link href="/views/assets/plugins/iconfonts/plugin.css" rel="stylesheet">
 </head>
 <body class="">
 <div id="global-loader"></div>
@@ -61,10 +60,7 @@
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         <div class="dropdown">
-                            <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                                <span class="avatar-md brround"></span>
-                                <span class="ml-2 d-none d-lg-block"><span class="text-dark">Реєстрація</span></span>
-                            </a>
+                            <a href="/pages/registration">Реєстрація</a>
                             <!--    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                    <a class="dropdown-item" href="">
                                        Выход
@@ -82,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <form method="post" class="card">
+                        <form action="auth" method="post" class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Вхід</h3>
                             </div>
@@ -92,25 +88,28 @@
                                         <div class="row">
                                             <div class=" col-md-8 col-lg-8 mx-auto">
                                                 <div class="form-group">
-                                                    <label class="form-label">Ваш логін ${pageContext.request.contextPath} </label>
+                                                    <label class="form-label">Ваш логін </label>
                                                     <input type="text" class="form-control" name="name" placeholder="Ваш логін">
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-8 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Ваш пароль</label>
-                                                    <input type="password" class="form-control" name="pass" placeholder="Ваш пароль">
+                                                    <input type="password" class="form-control" name="password" placeholder="Ваш пароль">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${MessageLogin}</b>
+                                    <c:remove var="MessageLogin"/>
                                 </div>
                             </div>
 
                             <div class="card-footer text-right">
                                 <div class="d-flex">
                                     <!-- <a href="javascript:void(0)" class="btn btn-link">Cancel</a> -->
-                                    <button type="submit" class="btn btn-primary ml-auto">Send data</button>
+                                    <input type="submit" class="btn btn-primary ml-auto" value="Log in">
                                 </div>
                             </div>
                         </form>
@@ -131,33 +130,33 @@
                     <!-- Back to top -->
                     <!-- <a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a> -->
                     <!-- Dashboard Css -->
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/jquery-3.2.1.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/bootstrap.bundle.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/jquery.sparkline.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/selectize.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/jquery.tablesorter.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/js/vendors/circle-progress.min.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/plugins/rating/jquery.rating-stars.js"></script>
+                    <script src="/views/assets/js/vendors/jquery-3.2.1.min.js"></script>
+                    <script src="/views/assets/js/vendors/bootstrap.bundle.min.js"></script>
+                    <script src="/views/assets/js/vendors/jquery.sparkline.min.js"></script>
+                    <script src="/views/assets/js/vendors/selectize.min.js"></script>
+                    <script src="/views/assets/js/vendors/jquery.tablesorter.min.js"></script>
+                    <script src="/views/assets/js/vendors/circle-progress.min.js"></script>
+                    <script src="/views/assets/plugins/rating/jquery.rating-stars.js"></script>
                     <!--Select2 js -->
-                    <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.full.min.js"></script>
+                    <script src="/views/assets/plugins/select2/select2.full.min.js"></script>
 
                     <!-- Timepicker js -->
-                    <script src="${pageContext.request.contextPath}/assets/plugins/time-picker/jquery.timepicker.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/plugins/time-picker/toggles.min.js"></script>
+                    <script src="/views/assets/plugins/time-picker/jquery.timepicker.js"></script>
+                    <script src="/views/assets/plugins/time-picker/toggles.min.js"></script>
 
                     <!-- Datepicker js -->
-                    <script src="${pageContext.request.contextPath}/assets/plugins/date-picker/spectrum.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/plugins/date-picker/jquery-ui.js"></script>
-                    <script src="${pageContext.request.contextPath}/assets/plugins/input-mask/jquery.maskedinput.js"></script>
+                    <script src="/views/assets/plugins/date-picker/spectrum.js"></script>
+                    <script src="/views/assets/plugins/date-picker/jquery-ui.js"></script>
+                    <script src="/views/assets/plugins/input-mask/jquery.maskedinput.js"></script>
 
                     <!-- Inline js -->
-                    <script src="${pageContext.request.contextPath}/assets/js/select2.js"></script>
+                    <script src="/views/assets/js/select2.js"></script>
 
                     <!-- Custom scroll bar Js-->
-                    <script src="${pageContext.request.contextPath}/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+                    <script src="/views/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
 
                     <!-- Custom Js-->
-                    <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
+                    <script src="/views/assets/js/custom.js"></script>
 
 </body>
 </html>

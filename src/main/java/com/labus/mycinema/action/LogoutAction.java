@@ -5,9 +5,10 @@ import com.labus.mycinema.action.exception.ActionException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddMovieAction implements Action {
+public class LogoutAction implements Action {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ActionException {
-        return "add-movie";
+        req.getSession().removeAttribute("user");
+        return "default";
     }
 }

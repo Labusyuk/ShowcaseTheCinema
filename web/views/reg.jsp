@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
@@ -18,67 +19,43 @@
 
     <!-- Title -->
     <title>Vobilet - a responsive, flat and full featured admin template</title>
-    <link rel="stylesheet" href="assets\fonts\fonts\font-awesome.min.css">
+    <link rel="stylesheet" href="\views\assets\fonts\fonts\font-awesome.min.css">
 
     <!-- Font Family -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
     <!-- Dashboard Css -->
-    <link href="assets\css\dashboard.css" rel="stylesheet">
+    <link href="\views\assets\css\dashboard.css" rel="stylesheet">
 
     <!-- c3.js Charts Plugin -->
-    <link href="assets\plugins\charts-c3\c3-chart.css" rel="stylesheet">
+    <link href="\views\assets\plugins\charts-c3\c3-chart.css" rel="stylesheet">
 
     <!-- select2 Plugin -->
-    <link href="assets\plugins\select2\select2.min.css" rel="stylesheet">
+    <link href="\views\assets\plugins\select2\select2.min.css" rel="stylesheet">
 
     <!-- Time picker Plugin -->
-    <link href="assets\plugins\time-picker\jquery.timepicker.css" rel="stylesheet">
+    <link href="\views\assets\plugins\time-picker\jquery.timepicker.css" rel="stylesheet">
 
     <!-- Date Picker Plugin -->
-    <link href="assets\plugins\date-picker\spectrum.css" rel="stylesheet">
+    <link href="\views\assets\plugins\date-picker\spectrum.css" rel="stylesheet">
 
     <!-- Custom scroll bar css-->
-    <link href="assets\plugins\scroll-bar\jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="\views\assets\plugins\scroll-bar\jquery.mCustomScrollbar.css" rel="stylesheet">
 
     <!---Font icons-->
-    <link href="assets\plugins\iconfonts\plugin.css" rel="stylesheet">
+    <link href="\views\assets\plugins\iconfonts\plugin.css" rel="stylesheet">
 
 </head>
 <body class="">
 <div id="global-loader"></div>
 <div class="page">
     <div class="page-main">
-        <div class="header py-4">
-            <div class="container">
-                <div class="d-flex">
-                    <a class="header-brand" href="#">
-                        Якийсь кінотеатр
-                    </a>
-                    <div class="d-flex order-lg-2 ml-auto">
-                        <div class="dropdown">
-                            <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                                <span class="avatar-md brround"></span>
-                                <span class="ml-2 d-none d-lg-block"><span class="text-dark">Вхід</span></span>
-                            </a>
-                            <!--    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                   <a class="dropdown-item" href="">
-                                       Выход
-                                   </a>
-                               </div> -->
-                        </div>
-                    </div>
-                    <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
-                        <span class="header-toggler-icon"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="header.jsp" />
         <div class="my-3 my-md-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <form method="post" class="card">
+                        <form action="regSignIn" method="post" class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Реєстрація</h3>
                             </div>
@@ -91,42 +68,58 @@
                                                     <label class="form-label">Вкажіть логін</label>
                                                     <input type="text" class="form-control" name="login" placeholder="Вкажіть логін">
                                                 </div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationLogin}</b></div>
+                                                <c:remove var="messageRegistrationLogin"/>
                                             </div>
                                             <div class=" col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Вкажіть ваше ім'я</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Вкажіть ваше ім'я">
+                                                    <input type="text" class="form-control" name="firstName" placeholder="Вкажіть ваше ім'я">
                                                 </div>
+
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationFirstName}</b></div>
+                                                <c:remove var="messageRegistrationFirstName"/>
                                             </div>
+
                                             <div class=" col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Вкажіть ваше прізвище</label>
-                                                    <input type="text" class="form-control" name="last_name" placeholder="Вкажіть ваше прізвище">
+                                                    <input type="text" class="form-control" name="secondName" placeholder="Вкажіть ваше прізвище">
                                                 </div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationSecondName}</b></div>
+                                                <c:remove var="messageRegistrationSecondName"/>
                                             </div>
                                             <div class=" col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Вкажіть ваш email</label>
                                                     <input type="email" class="form-control" name="email" placeholder="Вкажіть ваш email">
                                                 </div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationEmail}</b></div>
+                                                <c:remove var="messageRegistrationEmail"/>
                                             </div>
                                             <div class=" col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Вкажіть ваш телефон</label>
-                                                    <input type="email" class="form-control" name="phone" placeholder="Вкажіть ваш телефон">
+                                                    <input type="phone" class="form-control" name="phone" placeholder="Вкажіть ваш телефон">
                                                 </div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationPhone}</b></div>
+                                                <c:remove var="messageRegistrationPhone"/>
                                             </div>
                                             <div class="col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Вкажіть пароль</label>
-                                                    <input type="password" class="form-control" name="pass" placeholder="Вкажіть пароль">
+                                                    <input type="password" class="form-control" name="password" placeholder="Вкажіть пароль">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-lg-6 mx-auto">
                                                 <div class="form-group">
                                                     <label class="form-label">Повторіть пароль</label>
-                                                    <input type="password" class="form-control" name="pass" placeholder="Повторіть пароль">
+                                                    <input type="password" class="form-control" name="passwordRepeat" placeholder="Повторіть пароль">
                                                 </div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistrationPassword}</b></div>
+                                                <div style="text-align: center;"><b style="color: rgb(128, 0, 0);">${messageRegistration}</b></div>
+                                                <c:remove var="messageRegistrationPassword"/>
+                                                <c:remove var="messageRegistration"/>
                                             </div>
                                         </div>
                                     </div>
@@ -157,33 +150,33 @@
                     <!-- Back to top -->
                     <!-- <a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a> -->
                     <!-- Dashboard Css -->
-                    <script src="assets\js\vendors\jquery-3.2.1.min.js"></script>
-                    <script src="assets\js\vendors\bootstrap.bundle.min.js"></script>
-                    <script src="assets\js\vendors\jquery.sparkline.min.js"></script>
-                    <script src="assets\js\vendors\selectize.min.js"></script>
-                    <script src="assets\js\vendors\jquery.tablesorter.min.js"></script>
-                    <script src="assets\js\vendors\circle-progress.min.js"></script>
-                    <script src="assets\plugins\rating\jquery.rating-stars.js"></script>
+                    <script src="\views\assets\js\vendors\jquery-3.2.1.min.js"></script>
+                    <script src="\views\assets\js\vendors\bootstrap.bundle.min.js"></script>
+                    <script src="\views\assets\js\vendors\jquery.sparkline.min.js"></script>
+                    <script src="\views\assets\js\vendors\selectize.min.js"></script>
+                    <script src="\views\assets\js\vendors\jquery.tablesorter.min.js"></script>
+                    <script src="\views\assets\js\vendors\circle-progress.min.js"></script>
+                    <script src="\views\assets\plugins\rating\jquery.rating-stars.js"></script>
                     <!--Select2 js -->
-                    <script src="assets\plugins\select2\select2.full.min.js"></script>
+                    <script src="\views\assets\plugins\select2\select2.full.min.js"></script>
 
                     <!-- Timepicker js -->
-                    <script src="assets\plugins\time-picker\jquery.timepicker.js"></script>
-                    <script src="assets\plugins\time-picker\toggles.min.js"></script>
+                    <script src="\views\assets\plugins\time-picker\jquery.timepicker.js"></script>
+                    <script src="\views\assets\plugins\time-picker\toggles.min.js"></script>
 
                     <!-- Datepicker js -->
-                    <script src="assets\plugins\date-picker\spectrum.js"></script>
-                    <script src="assets\plugins\date-picker\jquery-ui.js"></script>
-                    <script src="assets\plugins\input-mask\jquery.maskedinput.js"></script>
+                    <script src="\views\assets\plugins\date-picker\spectrum.js"></script>
+                    <script src="\views\assets\plugins\date-picker\jquery-ui.js"></script>
+                    <script src="\views\assets\plugins\input-mask\jquery.maskedinput.js"></script>
 
                     <!-- Inline js -->
-                    <script src="assets\js\select2.js"></script>
+                    <script src="\views\assets\js\select2.js"></script>
 
                     <!-- Custom scroll bar Js-->
-                    <script src="assets\plugins\scroll-bar\jquery.mCustomScrollbar.concat.min.js"></script>
+                    <script src="\views\assets\plugins\scroll-bar\jquery.mCustomScrollbar.concat.min.js"></script>
 
                     <!-- Custom Js-->
-                    <script src="assets\js\custom.js"></script>
+                    <script src="\views\assets\js\custom.js"></script>
 
 </body>
 </html>

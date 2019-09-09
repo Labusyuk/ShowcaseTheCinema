@@ -1,5 +1,7 @@
 package com.labus.mycinema.filter;
 
+import com.labus.mycinema.action.ActionFactory;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +28,8 @@ public class GuestFilter implements Filter {
             if(!CommandFactory.commandsMap.containsKey(req.getPathInfo()))
                 req.getRequestDispatcher("/jsp/user.jsp").forward(req,resp);
         }*/
-        if(req.getPathInfo().equals("/")){
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
+        if(!ActionFactory.actionsMap.containsKey(req.getPathInfo())){
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index");
             requestDispatcher.forward(req, resp);
         }
         filterChain.doFilter(req, resp);

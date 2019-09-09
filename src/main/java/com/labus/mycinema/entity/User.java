@@ -12,6 +12,19 @@ public class User extends Entity {
     public User() {
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     public User(int id, String login, String password, UserRole role, String firstName, String secondName, String phone, String email) {
         super(id);
         this.login = login;

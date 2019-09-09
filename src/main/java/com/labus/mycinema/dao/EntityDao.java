@@ -10,20 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public abstract class EntityDao{
-    ConnectionPool pool = ConnectionPool.getInstance();
-    protected Connection connection = null;
+    protected ConnectionPool pool = ConnectionPool.getInstance();
     EntityDao() {
-    }
-    public void takeConnection(){
-        try {
-            connection = pool.takeConnection();
-            connection.setAutoCommit(false);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void returnConnection(Connection connection) {
-        pool.returnConnection(connection);
     }
 }

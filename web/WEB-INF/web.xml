@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
-        <url-pattern>/views/*</url-pattern>
+        <url-pattern>/pages/*</url-pattern>
     </servlet-mapping>
 
     <filter-mapping>
@@ -22,7 +22,7 @@
         <filter-name>EncodingFilter</filter-name>
         <filter-class>com.labus.mycinema.filter.EncodingFilter</filter-class>
     </filter>
-<!--    <filter>
+    <!--<filter>
         <filter-name>GuestFilter</filter-name>
         <filter-class>com.labus.mycinema.filter.GuestFilter</filter-class>
     </filter>

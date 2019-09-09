@@ -7,6 +7,8 @@ import com.labus.mycinema.dao.MoviesDao;
 import com.labus.mycinema.dao.TimetableDao;
 import com.labus.mycinema.entity.Timetable;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,21 +25,17 @@ public class MainController extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        for(Timetable t: new TimetableDao().getTimeTable()){
-            System.out.println(new MoviesDao().getById(t.getMovieId()).getName());
-        }
+        ProcessRequest(request,response);
     }
     private void ProcessRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Action action = ActionFactory.defineAction(request);
+        Action command = ActionFactory.defineAction(request);
         String result;
         try {
-            result = action.execute(request, response);
+            result = command.execute(request, response);
         } catch (ActionException e) {
             throw new ServletException();
         }
-        if(result==null){
-            return;
-        }
+        System.out.println(result+" | message | "+request.getSession().getAttribute("MessageLogin"));
         if (request.getMethod().equals("POST")) {
             response.sendRedirect(result);
         } else if (request.getMethod().equals("GET")){
