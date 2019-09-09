@@ -1,7 +1,7 @@
 # ShowcaseTheCinema
 Java EE. Cinema system. 
 Online showcase the cinema
-######Instructions to run the project:
+###### Instructions to run the project:
 
 1. Download and install jdk 1.8, Git, Apache Tomcat, MySQL
 2. Clone project: git clone https://github.com/Labusyuk/ShowcaseTheCinema.git
@@ -10,7 +10,7 @@ Online showcase the cinema
 5. cd to project folder and mvnw clean install
 6. Run with Tomcat
 
-###Entity relationship diagram database
+###### Entity relationship diagram database
 
 ![Image of Yaktocat](https://github.com/Labusyuk/ShowcaseTheCinema/blob/master/CinemaBDModelFirst.png?raw=true)
 
