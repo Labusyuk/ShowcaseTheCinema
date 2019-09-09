@@ -11,5 +11,6 @@ Online showcase the cinema
 6. Run with Tomcat
 
 ######Entity relationship diagram database
+
 ![Image of Yaktocat](https://github.com/Labusyuk/ShowcaseTheCinema/blob/master/CinemaBDModelFirst.png?raw=true)
 
