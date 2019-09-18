@@ -27,8 +27,11 @@ public class Timetable extends Entity {
 
     }
 
-    public String getTime() {
+    /*public String getTime() {
         return time.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+    }*/
+    public Timestamp getTime(){
+        return time;
     }
 
     public void setTime(Timestamp time) {

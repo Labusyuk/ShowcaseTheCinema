@@ -20,10 +20,13 @@ public class ActionFactory  {
         actionsMap.put("/logout", new LogoutAction());
     }
 
+
     public static Action defineAction(HttpServletRequest req) {
+        int[][] mass = new int[5][5];
         String actionPath = req.getPathInfo();
         Action command = actionsMap.get(actionPath);
         return command!=null?command:new DefaultAction();
+
     }
 
 }

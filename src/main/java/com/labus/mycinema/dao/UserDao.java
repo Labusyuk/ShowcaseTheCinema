@@ -5,15 +5,15 @@ import com.labus.mycinema.entity.User;
 import com.labus.mycinema.entity.UserRole;
 
 import java.sql.*;
+import java.util.List;
 
-public class UserDao extends EntityDao{
+public class UserDao extends EntityDao<Integer, User>{
     private final static String SELECT_BY_LOG_AND_PASS = "SELECT Login, Password, Role, FirstName, SecondName, Phone, Email FROM cinemadb.users WHERE Login=? AND Password=?";
     private final static String SELECT_BY_DUPLICATION = "SELECT Login, Phone, Email FROM cinemadb.users WHERE Login=? OR Phone=? OR Email=?";
     private final static String INSERT_USER = "INSERT INTO cinemadb.users (Login, Password, Role, FirstName, SecondName, Phone, Email, Cash) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     //private final static String SELECT_ALL = "SELECT Login, Password, Role, FirstName, SecondName, Phone, Email FROM bankschema.users";
-    private final static String UPDATE_BY_LOGIN = "UPDATE cinemadb.users SET Password=?, Role=?, FirstName=?, SecondName=? WHERE Login=?";
-    private final static String SELECT_BY_EMAIL = "SELECT Login, Password, Role, FirstName, SecondName, Phone, Email FROM cinemadb.users WHERE Email=?";
-
+    private final static String UPDATE_BY_LOGIN = "UPDATE cinemadb.users SET FirstName=?, SecondName=? WHERE Login=?";
+    private final static String SELECT_BY_ID = "SELECT UserId, Login, Password, Role, FirstName, SecondName, Phone, Email FROM cinemadb.users WHERE UserId=?";
 
 
     public User getByLogAndPass(String login, String password) throws DaoException{
@@ -65,6 +65,7 @@ public class UserDao extends EntityDao{
         return isRegistered;
     }
 
+    @Override
     public Integer create(User user) throws DaoException {
         int idUser = 0;
         try (Connection connection = pool.takeConnection();
@@ -77,10 +78,50 @@ public class UserDao extends EntityDao{
             statement.setString(6, user.getPhone());
             statement.setString(7, user.getEmail());
             statement.setInt(8,11191);
-            System.out.println(statement.executeUpdate());
+            statement.executeUpdate();
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if(resultSet.next())
+                idUser = resultSet.getInt(1);
+            resultSet.close();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
         return idUser;
+    }
+
+    @Override
+    public User find(Integer id) throws DaoException {
+        User user = null;
+        try(Connection connection = pool.takeConnection();PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)){
+            statement.setInt(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next())
+                user = retrieveEntity(resultSet);
+        }catch (SQLException e){
+            throw new DaoException();
+        }
+        return user;
+    }
+
+    @Override
+    public List<User> findAll() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void delete(Integer attribute) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void update(User user) throws DaoException {
+        try(Connection connection = pool.takeConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_BY_LOGIN)){
+            statement.setString(1, user.getFirstName());
+            statement.setString(2,user.getSecondName());
+            statement.setString(3,user.getLogin());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            throw new DaoException();
+        }
     }
 }

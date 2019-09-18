@@ -1,8 +1,7 @@
 package com.labus.mycinema.entity;
 
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 public class Movies extends Entity {
     private String name;
